@@ -26,7 +26,8 @@ case = read.csv( file.path(output_dir, "cased_sequenced.csv"), stringsAsFactors=
 clin$rna[ clin$patient %in% case[ case$expr %in% 1 , ]$patient ] = "fpkm"
 clin$dna[ clin$patient %in% case[ case$snv %in% 1 , ]$patient ] = "wes"
 
-clin = clin[ , c("patient" , "sex" , "age" , "primary" , "histo" , "stage" , "response.other.info" , "recist" , "response" , "drug_type" , "dna" , "rna" , "t.pfs" , "pfs" , "t.os" , "os" ) ]
+rownames(clin) = clin$patient
+clin = clin[ case$patient , c("patient" , "sex" , "age" , "primary" , "histo" , "stage" , "response.other.info" , "recist" , "response" , "drug_type" , "dna" , "rna" , "t.pfs" , "pfs" , "t.os" , "os" ) ]
 
 
 write.table( clin , file=file.path(output_dir, "CLIN.csv") , quote=FALSE , sep=";" , col.names=TRUE , row.names=FALSE )
