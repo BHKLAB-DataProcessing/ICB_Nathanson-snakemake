@@ -47,7 +47,7 @@ expr = fpkmToTpm( fpkm = as.matrix( data ) )
 #################################
 
 case = read.csv( file.path(output_dir, "cased_sequenced.csv"), stringsAsFactors=FALSE , sep=";" )
-data = log2( data[ , colnames(data) %in% case[ case$expr %in% 1 , ]$patient ] + 1 )
+data = log2( data[ , colnames(data) %in% case[ case$expr %in% 1 , ]$patient ] + 0.001 )
 
 genes <- c()
 gene_found <- c()

@@ -91,7 +91,8 @@ rule format_clin:
 rule format_cased_sequenced:
     input:
         S3.remote(prefix + "download/CLIN.txt"),
-        S3.remote(prefix + "download/EXPR.csv.gz")
+        S3.remote(prefix + "download/EXPR.csv.gz"),
+        S3.remote(prefix + "download/SNV.txt.gz")
     output:
         S3.remote(prefix + "processed/cased_sequenced.csv")
     resources:
