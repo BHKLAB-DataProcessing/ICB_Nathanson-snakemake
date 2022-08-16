@@ -45,7 +45,7 @@ clin$BRAF.NRASstatus <- str_replace_all(clin$BRAF.NRASstatus, ';', ',')
 annotation_tissue <- read.csv(file=file.path(annot_dir, 'curation_tissue.csv'))
 clin <- annotate_tissue(clin=clin, study='Nathanson', annotation_tissue=annotation_tissue, check_histo=TRUE)
 
-clin <- add_column(clin, unique_drugid="", .after='unique_tissueid')
+clin <- add_column(clin, treatmentid="", .after='tissueid')
 
 write.table( clin , file=file.path(output_dir, "CLIN.csv") , quote=FALSE , sep=";" , col.names=TRUE , row.names=FALSE )
 
